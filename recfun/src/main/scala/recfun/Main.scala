@@ -24,6 +24,7 @@ object Main {
     def pascal(c: Int, r: Int): Int = {
       def getRow(previousRow:List[Int], previousRowNumber: Int, requestRowNumber: Int): List[Int] = {
         println("prevRow:" + previousRowNumber + " reqRow: " + requestRowNumber)
+        println("prevList" + previousRow)
         if (requestRowNumber == 0) List(1)
         else if (requestRowNumber == 1) List(1,1)
         else if (previousRowNumber == 0) getRow(List(1,1), 1, requestRowNumber)
@@ -33,7 +34,7 @@ object Main {
               yield previousRow(column) + previousRow(column + 1)
 
           if (requestRowNumber == previousRowNumber + 1) List(1) ++ rowWithIntermediateNumbers.toList ++ List(1)
-          else getRow(List(1) ++ rowWithIntermediateNumbers.toList, previousRowNumber + 1, requestRowNumber)
+          else getRow(List(1) ++ rowWithIntermediateNumbers.toList ++ List(1), previousRowNumber + 1, requestRowNumber)
         }
       }
     println("getting row " + r + " & column " + c)
