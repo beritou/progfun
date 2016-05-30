@@ -30,7 +30,7 @@ object Main {
         else {
           val rowWithIntermediateNumbers =
             for (column <- 0 to previousRowNumber - 1)
-              yield previousRow(column).toInt + previousRow(column + 1).toInt
+              yield previousRow(column) + previousRow(column + 1)
 
           if (requestRowNumber == previousRowNumber + 1) List(1) ++ rowWithIntermediateNumbers.toList ++ List(1)
           else getRow(List(1) ++ rowWithIntermediateNumbers.toList, previousRowNumber + 1, requestRowNumber)
